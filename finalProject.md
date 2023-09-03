@@ -1,4 +1,4 @@
-###Capstone Project: Art Gallery
+### Capstone Project: Art Gallery
 
 Description
 This project is a simple art gallery website that allows users to view and purchase art.
