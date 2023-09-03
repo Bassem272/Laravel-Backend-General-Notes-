@@ -98,3 +98,57 @@ If you want to modify attributes of an existing column (e.g., changing its data 
 Remember to replace `your_table_name` with the actual name of your table and `column_name_to_remove` or `column_name_to_modify` with the appropriate column name.
 
 After running the migration, your table's structure will be updated according to your modifications. Always make sure to back up your data before making structural changes to your database.
+To modify a column name in Laravel, you can use Laravel's built-in migrations and schema builder. Here are the steps to change a column name:
+
+1. **Create a Migration for the Change:**
+
+    You'll need to create a new migration to rename the column. You can use the `make:migration` Artisan command to generate a new migration file. For example, if you want to rename the `old_column_name` to `new_column_name` in the `your_table` table, run:
+
+    ```bash
+    php artisan make:migration rename_column_in_your_table
+    ```
+
+    This will create a new migration file in the `database/migrations` directory.
+
+2. **Edit the Migration File:**
+
+    Open the newly created migration file in your code editor. Inside the `up` method, use the `table` method provided by Laravel's schema builder to modify the column name. Here's an example of how to rename the column:
+
+    ```php
+    use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
+
+    class RenameColumnInYourTable extends Migration
+    {
+        public function up()
+        {
+            Schema::table('your_table', function (Blueprint $table) {
+                $table->renameColumn('old_column_name', 'new_column_name');
+            });
+        }
+
+        public function down()
+        {
+            Schema::table('your_table', function (Blueprint $table) {
+                $table->renameColumn('new_column_name', 'old_column_name');
+            });
+        }
+    }
+    ```
+
+3. **Run the Migration:**
+
+    After defining the changes in your migration file, you can run the migration using the `migrate` Artisan command:
+
+    ```bash
+    php artisan migrate
+    ```
+
+    This will apply the column name change to your database table.
+
+4. **Update Your Code:**
+
+    Don't forget to update your code to reflect the new column name wherever it's used in your application. This includes model attributes, database queries, and any other places where the old column name is referenced.
+
+After following these steps, the column name in your database table should be successfully changed, and your application code should be updated to use the new column name.
