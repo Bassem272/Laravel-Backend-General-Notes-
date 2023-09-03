@@ -1,18 +1,19 @@
 ### Capstone Project: Art Gallery
 
 Description
+
 This project is a simple art gallery website that allows users to view and purchase art.
 
-Table of Contents
-Backend API (Laravel)
-Database (MySQL)
-Website (Angular)
-Admin Panel (Angular)
-Requirements
-Website
-User Registration
-User login
-User logout
+Table of Contents  
+ Backend API (Laravel)
+ Database (MySQL)
+ Website (Angular)
+ Admin Panel (Angular)
+ Requirements
+ Website
+ User Registration
+ User login
+ User logout
 Cart page
 Checkout page
 Product Listing
