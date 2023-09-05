@@ -1,23 +1,28 @@
-In a standard HTTP request coming from the front end, you can include the user's role and authorization token in the request headers. Here's how you can do it:
+In Laravel, you can extract the token and other headers from the HTTP request using the `request()` object, which is an instance of the `Illuminate\Http\Request` class. Here's how you can extract the token and the role from the request headers:
 
-1. **Authorization Token**:
+1. **Extracting the Authorization Token**:
 
-   You can send the user's authorization token using the `Authorization` header. The most common way to send an authorization token is using the Bearer Token format, like this:
+   To extract the authorization token (usually in Bearer Token format) from the request headers, you can use the `header()` method on the `Request` object:
 
-   ```
-   Authorization: Bearer your_token_here
-   ```
-
-   Replace `your_token_here` with the actual authorization token obtained during user authentication. This token can be a JWT (JSON Web Token), an API token, or any other secure authentication token depending on your application's authentication mechanism.
-
-2. **User Role**:
-
-   Including the user's role in the request headers is optional and depends on your application's requirements. If you need to determine the user's role on the server-side, you can include it as a custom header or as part of the request payload. For example:
-
-   ```
-   X-User-Role: admin
+   ```php
+   $token = $request->header('Authorization');
    ```
 
-   Here, `X-User-Role` is a custom header that specifies the user's role as "admin." You can adjust the value based on the user's actual role.
+   This will give you the entire authorization header, including the "Bearer " prefix and the token itself. If you want to extract just the token without the "Bearer " prefix, you can further manipulate the string, like so:
 
-When the request reaches your server, you can access these headers in your server-side code (e.g., in your Laravel controller) to authenticate and authorize the user based on their role and token. Laravel provides methods and middleware for handling authentication and authorization, allowing you to check the user's role and validate their token as needed.
+   ```php
+   $authorizationHeader = $request->header('Authorization');
+   $token = str_replace('Bearer ', '', $authorizationHeader);
+   ```
+
+2. **Extracting the User Role**:
+
+   To extract the user role from a custom header (e.g., `X-User-Role`) in the request headers, you can use the `header()` method similarly:
+
+   ```php
+   $userRole = $request->header('X-User-Role');
+   ```
+
+   This code will extract the value of the `X-User-Role` header from the request headers.
+
+Once you've extracted the token and user role, you can use them in your authentication and authorization logic. For example, you can use Laravel's built-in middleware like `auth` and create custom middleware to check the token and role before allowing access to specific routes or controller methods.
