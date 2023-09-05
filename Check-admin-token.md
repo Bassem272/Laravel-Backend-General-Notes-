@@ -1,4 +1,4 @@
-Yes, the approach I provided can also be used to check if a user is an admin. To perform an admin check, you would typically have a role or attribute in the user model that specifies the user's role (e.g., "admin" or "customer"). Here's how you can adapt the code to perform an admin check:
+ check if a user is an admin. To perform an admin check, you would typically have a role or attribute in the user model that specifies the user's role (e.g., "admin" or "customer"). Here's how you can adapt the code to perform an admin check:
 
 Assuming you have a `role` attribute in your `User` model:
 
