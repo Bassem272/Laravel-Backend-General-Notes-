@@ -34,9 +34,9 @@ Details of an order
 Update the status of an order  
 #### Customers  
 List all customers  
-### Specifications  
-Data Model  
-Product  
+# Specifications  
+## Data Model  
+### Product  
 Name  
 Description  
 Price  
@@ -44,7 +44,7 @@ Stock
 Image  
 Category  
 Status  
-Order  
+### Order  
 Order number  
 Customer name   
 Customer email  
@@ -59,18 +59,18 @@ Order date
   < Product subtotal  
 Order total  
  
-#### Customer  
+### Customer  
 Name  
 Email  
 Phone  
 Address  
-###  Business Logic  
-#### Admin Panel  
+#  Business Logic  
+### Admin Panel  
 Only the admin can access  
 Only the admin can create, update, and delete products  
 Only the admin can update the order status  
 Only the admin can view the customer list  
-#### Website  
+### Website  
 Only logged-in users can checkout  
 Only logged in users can view order history  
 Only logged-in users can view the cart  
@@ -81,5 +81,5 @@ Only logged-in users can view product details
 Only logged-in users can search for product  
 Only logged-in users can view the product list  
 Only logged-in users can view their profile  
-#### Backend  
+### Backend  
 The database must be migrated and seeded with sample data   
